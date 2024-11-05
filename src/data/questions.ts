@@ -1,6 +1,6 @@
 import { QuestionsProps } from "@/types/question";
 
-export const Questions: QuestionsProps = [
+export const questions: QuestionsProps = [
   {
     question: "Qual a capital do Uruguai?",
     options: ["Montevidéu", "Santiago", "Bogotá", "Lima"],
