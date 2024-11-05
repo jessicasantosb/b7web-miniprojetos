@@ -1,5 +1,6 @@
-import { QuestionItemProps } from "@/types/question";
 import { useState } from "react";
+
+import { QuestionItemProps } from "@/types";
 
 export function QuestionItem({ question, count, onAnswer }: QuestionItemProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
@@ -20,7 +21,7 @@ export function QuestionItem({ question, count, onAnswer }: QuestionItemProps) {
   const wrongAnswer = alreadySelected && selectedAnswer !== question.answer;
 
   return (
-    <div className="pb-6">
+    <>
       <h3 className="pb-2">
         {count}. {question.question}
       </h3>
@@ -45,6 +46,6 @@ export function QuestionItem({ question, count, onAnswer }: QuestionItemProps) {
           </label>
         );
       })}
-    </div>
+    </>
   );
 }

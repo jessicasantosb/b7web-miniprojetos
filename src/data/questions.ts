@@ -1,4 +1,4 @@
-import { QuestionProps } from "@/types/question";
+import { QuestionProps } from "@/types";
 
 export const questions: QuestionProps[] = [
   {

@@ -1,8 +1,10 @@
 "use client";
 
-import { QuestionItem } from "@/components/question-item";
-import { questions } from "@/data/questions";
 import { useState } from "react";
+
+import { QuestionItem } from "@/components/question-item";
+import { Result } from "@/components/result";
+import { questions } from "@/data/questions";
 
 export default function Home() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -23,22 +25,30 @@ export default function Home() {
   };
 
   return (
-    <main className="w-full h-full">
+    <main className="w-full h-full p-2">
       <h1 className="pt-16 pb-10 text-2xl tracking-wider text-center">QUIZZ</h1>
+      <div className="max-w-96 min-h-64 p-4 m-auto border">
+        {!showResult && (
+          <>
+            <QuestionItem
+              question={questions[currentQuestion]}
+              count={currentQuestion + 1}
+              onAnswer={handleAnswered}
+            />
+            <p className="text-center pt-4">
+              {currentQuestion + 1} de {questions.length} pergunta
+              {questions.length > 1 && "s"}
+            </p>
+          </>
+        )}
 
-      <div className="max-w-96 p-4 m-auto border ">
-        <QuestionItem
-          question={questions[currentQuestion]}
-          count={currentQuestion + 1}
-          onAnswer={handleAnswered}
-        />
-        <button className="h-10 px-4 border bg-slate-400">enviar</button>
+        {showResult && (
+          <>
+            <Result questions={questions} answers={answers} />
+            <button>Reiniciar</button>
+          </>
+        )}
       </div>
-
-      <p className="text-center pt-4">
-        {currentQuestion + 1} de {questions.length} pergunta
-        {questions.length > 1 && "s"}
-      </p>
     </main>
   );
 }

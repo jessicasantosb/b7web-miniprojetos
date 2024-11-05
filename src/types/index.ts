@@ -9,3 +9,8 @@ export type QuestionItemProps = {
   count: number;
   onAnswer: (answer: number) => void;
 };
+
+export type ResultProps = {
+  questions: QuestionProps[];
+  answers: number[];
+};
