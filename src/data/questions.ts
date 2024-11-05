@@ -1,6 +1,6 @@
-import { QuestionsProps } from "@/types/question";
+import { QuestionProps } from "@/types/question";
 
-export const questions: QuestionsProps = [
+export const questions: QuestionProps[] = [
   {
     question: "Qual a capital do Uruguai?",
     options: ["Montevidéu", "Santiago", "Bogotá", "Lima"],
@@ -9,6 +9,6 @@ export const questions: QuestionsProps = [
   {
     question: "Qual a capital do Chile?",
     options: ["Lima", "Montevidéu", "Assunção", "Santiago"],
-    answer: 2,
+    answer: 3,
   },
 ];

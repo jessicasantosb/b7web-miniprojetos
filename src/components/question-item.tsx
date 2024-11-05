@@ -5,11 +5,13 @@ export function QuestionItem({ question, count, onAnswer }: QuestionItemProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
 
   const checkQuestion = (key: number) => {
-    console.log(key);
-
-    if (key !== null) {
+    if (selectedAnswer === null) {
       setSelectedAnswer(key);
-      onAnswer(key);
+
+      setTimeout(() => {
+        onAnswer(key);
+        setSelectedAnswer(null);
+      }, 1000);
     }
   };
 

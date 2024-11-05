@@ -6,8 +6,21 @@ import { useState } from "react";
 
 export default function Home() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answers, setAnswers] = useState<number[]>([]);
+  const [showResult, setShowResult] = useState(false);
 
-  const handleAnswer = () => {};
+  const loadNextQuestion = () => {
+    if (questions[currentQuestion + 1]) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setShowResult(true);
+    }
+  };
+
+  const handleAnswered = (answer: number) => {
+    setAnswers([...answers, answer]);
+    loadNextQuestion();
+  };
 
   return (
     <main className="w-full h-full">
@@ -17,7 +30,7 @@ export default function Home() {
         <QuestionItem
           question={questions[currentQuestion]}
           count={currentQuestion + 1}
-          onAnswer={handleAnswer}
+          onAnswer={handleAnswered}
         />
         <button className="h-10 px-4 border bg-slate-400">enviar</button>
       </div>
